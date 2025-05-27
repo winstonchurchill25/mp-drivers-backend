@@ -17,8 +17,8 @@ const PORT = process.env.PORT || 5000;
 const emailTransporter = nodemailer.createTransport({
   service: "gmail", // or "hotmail", etc.
   auth: {
-    user: process.env.habibolowe@gmail.com,
-    pass: process.env.ddyxyslqzsrrfdfy,
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
   },
 });
 
