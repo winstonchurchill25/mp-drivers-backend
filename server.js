@@ -209,7 +209,7 @@ async function sendBookingConfirmation(booking) {
           <p><strong>Service:</strong> ${booking.serviceType}</p>
           <p><strong>Date:</strong> ${booking.date}</p>
           <p><strong>Time:</strong> ${booking.time}</p>
-          <p><strong>Amount Paid:</strong> $${booking.amount}</p>
+          <p><strong>Amount Paid:</strong> £${booking.amount}</p>
         </div>
         
         <p>We'll send you a reminder closer to your appointment date.</p>
