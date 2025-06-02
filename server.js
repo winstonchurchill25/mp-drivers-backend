@@ -215,7 +215,7 @@ async function sendBookingConfirmation(booking) {
         <p>We'll send you a reminder closer to your appointment date.</p>
         <p>If you need to make any changes, please contact us.</p>
         
-        <p>Best regards,<br>MP Drivers Team</p>
+        <p>Best regards,<br>MP Drivers</p>
       </div>
     `
   };
