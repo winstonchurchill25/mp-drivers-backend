@@ -240,6 +240,7 @@ async function sendAdminBookingNotification(booking) {
       <h2>New Booking Received</h2>
       <p><strong>Name:</strong> ${booking.name}</p>
       <p><strong>Email:</strong> ${booking.email}</p>
+      <p><strong>Phone:</strong> ${booking.phone}</p>
       <p><strong>Service:</strong> ${booking.serviceType}</p>
       <p><strong>Date:</strong> ${booking.date}</p>
       <p><strong>Time:</strong> ${booking.time}</p>
