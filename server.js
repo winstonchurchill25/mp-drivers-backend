@@ -233,7 +233,7 @@ async function sendBookingConfirmation(booking) {
 async function sendContactNotification(contact) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.ADMIN_EMAIL, || process.env.EMAIL_USER,
+    to: process.env.ADMIN_EMAIL,
     subject: `New Contact Form: ${contact.subject}`,
     html: `
       <h3>New Contact Form Submission</h3>
@@ -258,7 +258,7 @@ async function sendContactNotification(contact) {
 async function sendAdminBookingNotification(booking) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER, // Fallback if not set
+    to: process.env.ADMIN_EMAIL,
     subject: `New Booking Received: ${booking.name} (${booking.id})`,
     html: `
       <h2>New Booking Received</h2>
