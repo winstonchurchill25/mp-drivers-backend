@@ -93,6 +93,8 @@ app.post('/api/book/confirm-booking', async (req, res) => {
 
     // Send confirmation email
     await sendBookingConfirmation(booking);
+    // Send booking details to admin
+    await sendAdminBookingNotification(booking);
 
     res.json({ 
       success: true, 
