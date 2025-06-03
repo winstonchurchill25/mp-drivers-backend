@@ -233,7 +233,7 @@ async function sendBookingConfirmation(booking) {
 async function sendContactNotification(contact) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER, // Send to yourself
+    to: process.env.ADMIN_EMAIL, || process.env.EMAIL_USER,
     subject: `New Contact Form: ${contact.subject}`,
     html: `
       <h3>New Contact Form Submission</h3>
@@ -251,6 +251,33 @@ async function sendContactNotification(contact) {
     console.log('Contact notification sent');
   } catch (error) {
     console.error('Contact notification failed:', error);
+  }
+}
+
+// Place the new function HERE:
+async function sendAdminBookingNotification(booking) {
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.ADMIN_EMAIL || process.env.EMAIL_USER, // Fallback if not set
+    subject: `New Booking Received: ${booking.name} (${booking.id})`,
+    html: `
+      <h2>New Booking Received</h2>
+      <p><strong>Name:</strong> ${booking.name}</p>
+      <p><strong>Email:</strong> ${booking.email}</p>
+      <p><strong>Service:</strong> ${booking.serviceType}</p>
+      <p><strong>Date:</strong> ${booking.date}</p>
+      <p><strong>Time:</strong> ${booking.time}</p>
+      <p><strong>Amount Paid:</strong> £${booking.amount}</p>
+      <p><strong>Booking ID:</strong> ${booking.id}</p>
+      <p><strong>Created At:</strong> ${booking.createdAt}</p>
+    `
+  };
+
+  try {
+    await emailTransporter.sendMail(mailOptions);
+    console.log('Admin notification sent to:', mailOptions.to);
+  } catch (error) {
+    console.error('Admin email sending failed:', error);
   }
 }
 
