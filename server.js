@@ -229,32 +229,6 @@ async function sendBookingConfirmation(booking) {
   }
 }
 
-// Send contact form notification
-async function sendContactNotification(contact) {
-  const mailOptions = {
-    from: process.env.EMAIL_USER,
-    to: process.env.ADMIN_EMAIL,
-    subject: `New Contact Form: ${contact.subject}`,
-    html: `
-      <h3>New Contact Form Submission</h3>
-      <p><strong>Name:</strong> ${contact.name}</p>
-      <p><strong>Email:</strong> ${contact.email}</p>
-      <p><strong>Subject:</strong> ${contact.subject}</p>
-      <p><strong>Message:</strong></p>
-      <p>${contact.message}</p>
-      <p><strong>Submitted:</strong> ${contact.createdAt}</p>
-    `
-  };
-
-  try {
-    await emailTransporter.sendMail(mailOptions);
-    console.log('Contact notification sent');
-  } catch (error) {
-    console.error('Contact notification failed:', error);
-  }
-}
-
-// Place the new function HERE:
 async function sendAdminBookingNotification(booking) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
@@ -278,6 +252,32 @@ async function sendAdminBookingNotification(booking) {
     console.log('Admin notification sent to:', mailOptions.to);
   } catch (error) {
     console.error('Admin email sending failed:', error);
+  }
+}
+
+
+// Send contact form notification
+async function sendContactNotification(contact) {
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.ADMIN_EMAIL,
+    subject: `New Contact Form: ${contact.subject}`,
+    html: `
+      <h3>New Contact Form Submission</h3>
+      <p><strong>Name:</strong> ${contact.name}</p>
+      <p><strong>Email:</strong> ${contact.email}</p>
+      <p><strong>Subject:</strong> ${contact.subject}</p>
+      <p><strong>Message:</strong></p>
+      <p>${contact.message}</p>
+      <p><strong>Submitted:</strong> ${contact.createdAt}</p>
+    `
+  };
+
+  try {
+    await emailTransporter.sendMail(mailOptions);
+    console.log('Contact notification sent');
+  } catch (error) {
+    console.error('Contact notification failed:', error);
   }
 }
 
